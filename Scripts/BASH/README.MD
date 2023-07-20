@@ -1,0 +1,1 @@
+The fahrenheit and celcius script will stdout the adc temperature. CandF will output both. The filepath to the raw data is in the BASH scripts. The pseudo-random numbers used to calculate the temperature can be found in the folder with the raw data. The script can also be modified to grab other values such as voltages at points around the board and those can be output as well.

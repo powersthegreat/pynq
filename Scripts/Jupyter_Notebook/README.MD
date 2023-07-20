@@ -1,0 +1,1 @@
+HUGE CREDIT to Pau Gomez and FPGA Developer, a lot of these jupyter notebooks were either heavily influenced or copied from their designs. To look for walkthroughs or better information on this topic, I highly recommend checking out their github or youtube channels.
