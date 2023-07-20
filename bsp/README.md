@@ -30,7 +30,7 @@ Navigate to the newly created <project_name> folder and begin the hardware confi
    ```
 From the graphical configuration settings setup the hardware for your specific board. Example for the Red-Pitaya 125-14 can be see below.
 
-<center><img src="../images/hw_configuration.PNG" alt="file structure"></center>
+<center><img src="images/hw_configuration.PNG" alt="file structure"></center>
 
 From the previously created hardware configuration run the following to create the board support package.
  ```sh
