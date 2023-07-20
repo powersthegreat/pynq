@@ -1,5 +1,5 @@
 <!-- GETTING STARTED -->
-## PYNQ IMAGE BUILD FLOW
+# PYNQ Image Build Flow
 
 The following outlines a step by step walkthrough for porting the PYNQ platform to a custom board. The only prerequisite is a tested base design of the board specifying the Zynq part type and the DRAM configuration.
 
