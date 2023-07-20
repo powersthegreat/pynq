@@ -2,7 +2,7 @@
 
 # PYNQ
 
-This repositroy holds common walkthroughs, example files, and images for AMD's PYNQ SoC platform. Each subfolder holds a seperate README.md describing the folders use and a example build. The following information is an exerpt from the <a href="http://github.com/Xilinx/PYNQ/" target="_blank">PYNQ github</a> overviewing the platform and its uses.
+This repository holds common walkthroughs, example files, and images for AMD's PYNQ SoC platform. Each subfolder holds a seperate README.md describing the folders use and a example build. The following information is an exerpt from the <a href="http://github.com/Xilinx/PYNQ/" target="_blank">PYNQ github</a> overviewing the platform and its uses.
 
 ## About
 PYNQ is an open-source project from Xilinx that makes it easy to design embedded systems with Zynq All Programmable Systems on Chips (APSoCs). Using the Python language and libraries, designers can exploit the benefits of programmable logic and microprocessors in Zynq to build more capable and exciting embedded systems.
