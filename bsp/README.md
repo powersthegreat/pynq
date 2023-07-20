@@ -1,5 +1,5 @@
 <!-- GETTING STARTED -->
-## PYNQ IMAGE BUILD FLOW
+# BSP Build Flow
 
 The following outlines a step by step walkthrough for creating a board support package for a custom board. The only prerequesite is a tested base design of the board specifiying the Zynq aprt and the DRAM configuration.
 
