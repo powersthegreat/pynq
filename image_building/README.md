@@ -1,5 +1,5 @@
 <!-- GETTING STARTED -->
-## PYNQ IAMGE BUILD FLOW
+## PYNQ IMAGE BUILD FLOW
 
 The following outlines a step by step walkthrough for porting the PYNQ platform to a custom board. The only prerequisite is a tested base design of the board specifying the Zynq part type and the DRAM configuration.
 
@@ -37,7 +37,7 @@ The final step of setting up the build enviroment includes running the cloned re
 ### Settig up the Board Repo
 PYNQ can be ported to new boards via declaring a custom board file structure that describes the devices hardware, processors, and linux device tree. The following shows a base structure of what this file system should look like.
 
-<img src="images/file_structure.png" alt="file structure" width="80" height="80">
+<center><img src="images/file_structure.PNG" alt="file structure"></center>
 
 Some important things to note about the above file system are ...
 
@@ -92,9 +92,9 @@ Withing the PYNQ/sdbuild repo, create a new folder named prebuilt. Inside this f
     PYNQ_SDIST = https://github.com/Xilinx/PYNQ/releases *under assets dropdown*
     PYNQ_ROOTFS = http://www.pynq.io/board.html *under PYNQ SD card image*
    ```
-These files should be renamed as follows for the makefile ot find them.
+These files should be renamed as follows for the makefile to find them.
 
-<img src="images/prebuilts.png" alt="file structure" width="80" height="80">
+<center><img src="images/prebuilts.PNG" alt="prebuilts file structure"></center>
 
 
 ### Finally Building
@@ -102,13 +102,37 @@ The makefile depends on all xilinx tools and petalinux therefore before running 
  ```sh
 	source //tools/Xilinx/2022.1/Vivado/2022.1/settings64.sh
 	source //tools/Xilinx/2022.1/Vitis/2022.1/settings64.sh
-  source //tools/Xilinx/2022.1/Petalinux/2022.1/settings.sh
+  	source //tools/Xilinx/2022.1/Petalinux/2022.1/settings.sh
    ```
 Navigate back the the PYNQ/sdbuild then open the boards folder and delete all other boards besides the desired board folder previously created then commit these changes. The compiler will try to create pynq images for all boards in this folder so this greatly reduces the build process. Finally the make command can be run from the PYNQ/sdbuild repo to initiate the build process. The makefile should correctly assume the pynq source distribution and root file system are included in a prebuilt folder but if an error occurs they can be specifically recongized using the following flags.
  ```sh
    $ make PYNQ_SDIST=//<path_to_PYNQ>/sdbuild/prebuilt/pynq_sdist.tar.gz PYNQ_ROOTFS=//<path_to_PYNQ>/sdbuild/prebuilt/pynq_rootfs.arm.tar.gz BOARDS=<board_name> BOARDDIR=//<path_to_PYNQ>/boards/<board_name>
    ```
 If the build process completes all created files will be packaged into an image and stored in the sdbuild/output/ folder in the form <board_name>.iso.
+
+
+
+## TROUBLE SHOOTING
+The build process is quite fragile and more often than not errors will occur. The following outlines the most common and their work arounds / solutions.
+
+### 1. PYNQ_DIST or PYNQ_ROOTFS files not found errors:
+   
+When this error occurs it is most likely becuase the location, or more importantly the naming of the prebuilt source distribution or root file system is incorrect. As referenced before the two files should be kept in their packed in their .tar types inside of PYNQ/sdbuild/prebuilt/ and labeled pynq_rootfs.<arm/aarch64>.tar.gz 	pynq_sdist.tar.gz accordingly.
+
+### 2. Build stopping after successfully checking enviroment:
+
+My first couple builds (with all flags assigned correctly) led to the build stopping shortly after verifying system packages (about 1 minute into the build). This happens becuase for some reason against PYNQ's documentation, the makefile searches for all board files two folders into the boards folder. Instead of correcting the numerous makefile paths the easiest workaround is too create the incorrect structure they are looking for as follows.
+
+<center><img src="images/file_structure_rebuilt.PNG" alt="rebuilt file structure"></center>
+
+As seen above an extra folder layer is added between boards and the included board files named <board_name> again. This will resolve the early quit error and allow the build process to continue to run.
+
+### 3. KERNEL_DEVSRC error (deep into build):
+
+If the build process errors out half way through and produces a kernel-devsrc incomplete or something of the sorts follow the onlyworking option is the follow the workaround document attached in this folder. WORK IN PROGRESS...
+
+
+
 
 
 
