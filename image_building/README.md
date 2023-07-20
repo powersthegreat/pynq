@@ -45,15 +45,16 @@ Some important things to note about the above file system are ...
 	   project as it is constantly referenced in the makefile script. All other folder names seen above
 	   should be kept relativly strict as well except for minor exceptions (packages and its subfolders).
 
-2. the base folder should contain the base vivado build exported .bit (generated bitsream) and .hwh
-	   (hardware handoff) files for the base PL design to be ran. The above example includes the instantiation
+2. The base folder should contain the base vivado build exported .bit (generated bitsream) and .hwh
+	   (hardware handoff) files for the base PL design to be ran aswell as a base.py file where if choosen the
+	   base design can be instantiated using PYNQ. The above example includes the instantiation
 	   of the processor system aswell as a AXI_GPIO controlled connected to the boards LEDS.
 
-3. the packages folder is where A. new board packages are included to be preinstalled on board when booted
+3. The packages folder is where A. new board packages are included to be preinstalled on board when booted
 	   or B. a base pynq python script can be placed to run at boot time. The above boot.py and pre.sh scripts
 	   flash all leds in a knight rider pattern when board is successfully booted and the base PL design is 
 	   flashed onto the FPGA.
-4. the petalinux_bsp folder (which is used by the pynq commpiler to create a BSP (board support package) for
+4. The petalinux_bsp folder (which is used by the pynq commpiler to create a BSP (board support package) for
 	   the custom board) holds the base .xsa file, which should have been exported from vivado to get the .hwh 
 	   file. Although all files in the base folder are named following suit, the .xsa file should be placed in a 
 	   folder named hardware_project and must be renamed to system.xsa for build to recongnize it.
